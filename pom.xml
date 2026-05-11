@@ -17,7 +17,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
 </properties>
-</properties>
 <dependencies>
 <dependency>
 <groupId>org.springframework.boot</groupId>
