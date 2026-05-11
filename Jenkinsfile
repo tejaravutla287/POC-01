@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Security Scan (Dependency-Check)') {
             steps {
-                dependencyCheck odcInstallation: 'DP-Check'
+                dependencyCheck additionalArguments: '--scan .', odcInstallation: 'OWASP-DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
