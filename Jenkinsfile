@@ -33,10 +33,13 @@ pipeline {
         }
         stage('Security Scan (Dependency-Check)') {
             steps {
-                dependencyCheck additionalArguments: '--scan .', odcInstallation: 'OWASP-DC'
+                dependencyCheck additionalArguments: "--scan . --nvdApiKey=4a9f5b3b-391e-4ecb-8e57-71ab56079f0f
+",
+                                 odcInstallation: 'OWASP-DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
+
         stage('Docker Build & Push') {
             steps {
                 sh 'docker build -t my-devops-app:latest .'
