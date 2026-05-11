@@ -2,15 +2,25 @@ pipeline {
     agent any
     tools {
         maven 'Maven3' // Must match the name in Jenkins Global Tool Config 
-        jdk 'jdk21'
+    }
+    environment {
+        // Force the environment to use Java 21
+        JAVA_HOME = "/usr/lib/jvm/java-21-openjdk-amd64"
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
     }
     stages {
         stage('Git Checkout') {
             steps { checkout scm }
         }
-        stage('Maven Build & Unit Test') {
-            steps { 
+         stage('Environment Check') {
+            steps {
+                // This will prove to you in the logs if it's actually using 21
                 sh 'java -version'
+                sh 'mvn -version'
+            }
+        }
+        stage('Maven Build & Unit Test') {
+            steps {
                 sh 'mvn clean package' 
             }
         }
