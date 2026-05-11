@@ -12,8 +12,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 <version>0.0.1-SNAPSHOT</version>
 <name>demo</name>
 <properties>
-<java.version>11</java.version>
-    <maven.compiler.release>11</maven.compiler.release>
+<properties>
+    <java.version>21</java.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+</properties>
 </properties>
 <dependencies>
 <dependency>
