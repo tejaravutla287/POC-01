@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Security Scan (Dependency-Check)') {
             steps {
-                dependencyChecK additionalArguments: "--scan . --nvdApiKey=4a9f5b3b-391e-4ecb-8e57-71ab56079f0f",
+                dependencyCheck additionalArguments: "--scan . --nvdApiKey=4a9f5b3b-391e-4ecb-8e57-71ab56079f0f",
                                  odcInstallation: 'OWASP-DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
