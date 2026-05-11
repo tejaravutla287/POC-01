@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Security Scan (Dependency-Check)') {
             steps {
-                dependencyCheck odcInstallation: 'DP-Check', hintsFile: ''
+                dependencyCheck odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
