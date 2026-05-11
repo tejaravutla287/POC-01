@@ -24,10 +24,16 @@ pipeline {
                 sh 'mvn clean package' 
             }
         }
-        stage('SonarQube Quality Check') {
+        stage('SonarCloud Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube-Server') { 
-                    sh 'mvn sonar:sonar' 
+                withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+                    sh '''
+                    mvn sonar:sonar \
+                    -Dsonar.projectKey=your_project_key \
+                    -Dsonar.organization=your_org \
+                    -Dsonar.host.url=https://sonarcloud.io \
+                    -Dsonar.login=$SONAR_TOKEN
+                    '''
                 }
             }
         }
