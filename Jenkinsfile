@@ -9,7 +9,10 @@ pipeline {
             steps { checkout scm }
         }
         stage('Maven Build & Unit Test') {
-            steps { sh 'mvn clean package' }
+            steps { 
+                sh 'java -version'
+                sh 'mvn clean package' 
+            }
         }
         stage('SonarQube Quality Check') {
             steps {
