@@ -62,6 +62,11 @@ pipeline {
                 sh 'docker run -d --name my-running-app -p 8081:8080 my-devops-app:latest'
             }
         }
+        stage('Cleanup Trivy Cache') {
+            steps {
+                sh 'sudo rm -rf /var/lib/jenkins/.cache/trivy || true'
+            }
+        }
     }
     
         post {
