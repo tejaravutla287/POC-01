@@ -56,9 +56,8 @@ pipeline {
                 sh '''
                 trivy image \
                   --scanners vuln \
+                  --pkg-types os \
                   --severity HIGH,CRITICAL \
-                  --skip-db-update \
-                  --skip-java-db-update \
                   --no-progress \
                   my-devops-app:latest
                 '''
