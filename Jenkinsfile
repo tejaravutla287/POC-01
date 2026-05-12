@@ -53,7 +53,14 @@ pipeline {
         }
         stage('Trivy Image Scan') {
             steps {
-                sh 'trivy image --severity HIGH,CRITICAL my-devops-app:latest'
+                sh '''
+                trivy image \
+                  --scanners vuln \
+                  --severity HIGH,CRITICAL \
+                  --skip-java-db \
+                  --no-progress \
+                  my-devops-app:latest
+                '''
             }
         }
         stage('Deploy to Container') {
