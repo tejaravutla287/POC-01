@@ -57,7 +57,8 @@ pipeline {
                 trivy image \
                   --scanners vuln \
                   --severity HIGH,CRITICAL \
-                  --skip-java-db \
+                  --skip-db-update \
+                  --skip-java-db-update \
                   --no-progress \
                   my-devops-app:latest
                 '''
